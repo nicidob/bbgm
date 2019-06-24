@@ -16,7 +16,8 @@ tables = {}
 teams = ['MIL','TOR','PHI','BOS','IND','BRK','ORL','DET','CHO','MIA',\
          'WAS','ATL','CHI','CLE','NYK','GSW','DEN','POR','HOU','UTA',\
          'OKC','SAS','LAC','SAC','LAL','MIN','MEM','NOP','DAL','PHO',\
-         'NJN','SEA','VAN','NOH','CHA','CHH','NOK']
+         'NJN','SEA','VAN','NOH','CHA','CHH','NOK','KCO','BUF','WSB',\
+         'KCK','SDC','NOJ','BAL','CAP','NYN']
 teams = sorted(teams)
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
