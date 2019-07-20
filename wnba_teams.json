@@ -1,0 +1,16 @@
+{
+    "teams": [
+        {"tid": 0, "cid": 0, "did": 0, "region": "Atlanta", "name": "Dream", "abbrev": "ATL", "pop": 4.3, "imgURL": "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Atlanta_Dream_logo.svg/320px-Atlanta_Dream_logo.svg.png" },
+        {"tid": 1, "cid": 0, "did": 0, "region": "Connecticut", "name": "Sun", "abbrev": "CON", "pop": 4.4, "imgURL": "https://upload.wikimedia.org/wikipedia/en/thumb/0/09/Connecticut_Sun_logo.svg/261px-Connecticut_Sun_logo.svg.png"},
+        {"tid": 2, "cid": 0, "did": 0, "region": "Chicago", "name": "Sky", "abbrev": "CHI", "pop": 8.8, "imgURL": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Chicago_Sky_logo.svg/209px-Chicago_Sky_logo.svg.png"},
+        {"tid": 3, "cid": 0, "did": 0, "region": "Indiana", "name": "Fever", "abbrev": "IND", "pop": 1.6, "imgURL": "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Indiana_Fever_logo.svg/253px-Indiana_Fever_logo.svg.png"},
+        {"tid": 4, "cid": 1, "did": 1, "region": "Dallas", "name": "Wings", "abbrev": "DAL", "pop": 4.7, "imgURL": "https://upload.wikimedia.org/wikipedia/en/thumb/9/95/Dallas_Wings_logo.svg/320px-Dallas_Wings_logo.svg.png"},
+        {"tid": 5, "cid": 1, "did": 1, "region": "Las Vegas", "name": "Aces", "abbrev": "LVA", "pop": 1.7,"imgURL":"https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Las_Vegas_Aces_logo.svg/171px-Las_Vegas_Aces_logo.svg.png" },
+        {"tid": 6, "cid": 1, "did": 1, "region": "Los Angeles", "name": "Sparks", "abbrev": "LAS", "pop": 12.3,"imgURL":"https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Los_Angeles_Sparks_logo.svg/330px-Los_Angeles_Sparks_logo.svg.png" },
+        {"tid": 7, "cid": 1, "did": 1, "region": "Minnesota", "name": "Lynx", "abbrev": "MIN", "pop": 2.6,"imgURL":"https://upload.wikimedia.org/wikipedia/en/thumb/7/75/Minnesota_Lynx_logo.svg/330px-Minnesota_Lynx_logo.svg.png" },
+        {"tid": 8, "cid": 0, "did": 0, "region": "New York", "name": "Liberty", "abbrev": "NYL", "pop": 18.7,"imgURL":"https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/New_York_Liberty_logo.svg/330px-New_York_Liberty_logo.svg.png" },
+        {"tid": 9, "cid": 1, "did": 1, "region": "Phoenix", "name": "Mercury", "abbrev": "PHO", "pop": 3.4,"imgURL":"https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Phoenix_Mercury_logo.svg/330px-Phoenix_Mercury_logo.svg.png" },
+        {"tid": 10, "cid": 1, "did": 1, "region": "Seattle", "name": "Storm", "abbrev": "SEA", "pop": 3.0,"imgURL":"https://upload.wikimedia.org/wikipedia/en/thumb/a/ac/Seattle_Storm_logo.svg/330px-Seattle_Storm_logo.svg.png" },
+        {"tid": 11, "cid": 0, "did": 0, "region": "Washington", "name": "Mystics", "abbrev": "WAS", "pop": 4.2,"imgURL":"https://upload.wikimedia.org/wikipedia/en/thumb/7/79/Washington_Mystics_logo.svg/330px-Washington_Mystics_logo.svg.png" }
+    ]
+}
