@@ -1,0 +1,163 @@
+﻿team,num,name,pos,hgt,weight,dob,exp,college
+ATL,20,Alex Bentley,G,7-May,152,27-Oct-90,6,PENN STATE/USA
+ATL,25,Monique Billings,F,4-Jun,185,2-May-96,1,UCLA
+ATL,51,Jessica Breland,F,2-Jun,166,23-Feb-88,7,NORTH CAROLINA/USA
+ATL,5,Maite Cazorla,G,10-May,155,18-Jun-97,R,OREGON
+ATL,81,Alaina Coates,C,4-Jun,225,7-Apr-95,1,SOUTH CAROLINA
+ATL,10,Nia Coffey,F,1-Jun,182,11-Jun-95,2,NORTHWESTERN
+ATL,24,Marie Gülich,C,5-Jun,205,28-May-94,1,OREGON STATE
+ATL,15,Tiffany Hayes,G,10-May,155,20-Sep-89,7,CONNECTICUT/USA
+ATL,35,Angel McCoughtry,F-G,1-Jun,173,10-Sep-86,9,LOUISVILLE/USA
+ATL,21,Renee Montgomery,G,7-May,140,2-Dec-86,10,CONNECTICUT/USA
+ATL,7,Brittney Sykes,G,9-May,154,7-Feb-94,2,SYRACUSE
+ATL,1,Elizabeth Williams,C-F,3-Jun,200,23-Jun-93,4,DUKE
+CHI,2,Kahleah Copper,G-F,1-Jun,155,28-Aug-94,3,RUTGERS
+CHI,1,Diamond DeShields,G,1-Jun,163,5-Mar-95,1,TENNESSEE
+CHI,31,Stefanie Dolson,C,5-Jun,231,8-Jan-92,5,CONNECTICUT
+CHI,21,Jamierra Faulkner,G,6-May,138,9-Mar-92,4,SOUTHERN MISSISSIPPI
+CHI,0,Chloe Jackson,G,8-May,147,21-Aug-96,R,BAYLOR
+CHI,7,Jantel Lavender,F-C,4-Jun,185,12-Nov-88,8,OHIO STATE/USA
+CHI,45,Astou Ndour,C,5-Jun,150,22-Aug-94,3,SENEGAL
+CHI,32,Cheyenne Parker,F,4-Jun,193,22-Aug-92,4,MIDDLE TENNESSEE STATE
+CHI,14,Allie Quigley,G,10-May,140,20-Jun-86,10,DEPAUL/USA
+CHI,33,Katie Lou Samuelson,G-F,3-Jun,169,13-Jun-97,R,CONNECTICUT
+CHI,22,Courtney Vandersloot,G,8-May,145,8-Feb-89,8,GONZAGA/USA
+CHI,15,Gabby Williams,F,11-May,172,9-Sep-96,1,CONNECTICUT
+PHO,31,Kristine Anigwe,F-C,4-Jun,200,31-Mar-97,R,CALIFORNIA
+PHO,1,Rachel Banham,G,9-May,168,15-Jul-93,3,MINNESOTA
+PHO,23,Layshia Clarendon,G,9-May,158,2-May-91,6,CALIFORNIA/USA
+PHO,2,Natisha Hiedeman,G,7-May,125,10-Feb-97,R,MARQUETTE
+PHO,32,Bria Holmes,G,1-Jun,170,19-Apr-94,2,WEST VIRGINIA
+PHO,35,Jonquel Jones,F-C,6-Jun,190,5-Jan-94,3,GEORGE WASHINGTON
+PHO,42,Brionna Jones,F,3-Jun,230,18-Dec-95,2,MARYLAND
+PHO,40,Shekinna Stricklen,G-F,2-Jun,178,30-Jul-90,7,TENNESSEE/USA
+PHO,25,Alyssa Thomas,F,2-Jun,185,12-Apr-92,5,MARYLAND
+PHO,5,Jasmine Thomas,G,9-May,145,30-Sep-89,8,DUKE/USA
+PHO,33,Morgan Tuck,F,2-Jun,200,30-Apr-94,3,CONNECTICUT
+PHO,10,Courtney Williams,G,8-May,136,11-May-94,3,SOUTH FLORIDA
+IND,11,Natalie Achonwa,F-C,3-Jun,190,22-Nov-92,4,NOTRE DAME
+IND,25,Kennedy Burke,G,1-Jun,182,14-Feb-97,R,UCLA
+IND,4,Candice Dupree,F,2-Jun,178,16-Aug-84,13,TEMPLE/USA
+IND,42,Shenise Johnson,G,11-May,172,8-Dec-90,6,MIAMI (FLA.)/USA
+IND,7,Paris Kea,G,9-May,142,7-Apr-96,R,NORTH CAROLINA
+IND,44,Betnijah Laney,G,Jun-00,160,29-Oct-93,3,RUTGERS
+IND,23,Stephanie Mavunga,F,3-Jun,205,24-Feb-95,1,OHIO STATE
+IND,22,Erica McCall,F,2-Jun,184,21-Aug-95,2,STANFORD
+IND,15,Teaira McCowan,C,7-Jun,239,28-Sep-96,R,MISSISSIPPI STATE
+IND,3,Tiffany Mitchell,G,9-May,152,23-Sep-94,3,SOUTH CAROLINA
+IND,0,Kelsey Mitchell,G,8-May,151,12-Nov-95,1,OHIO STATE
+IND,35,Victoria Vivians,G,1-Jun,183,17-Nov-94,1,MISSISSIPPI STATE
+IND,17,Erica Wheeler,G,7-May,143,2-May-91,4,RUTGERS
+NYL,9,Rebecca Allen,G,2-Jun,162,6-Nov-92,4,AUSTRALIA
+NYL,15,Brittany Boyd,G,9-May,156,11-Jun-93,4,CALIFORNIA
+NYL,31,Tina Charles,C,4-Jun,192,5-Dec-88,9,CONNECTICUT/USA
+NYL,25,Asia Durr,G,10-May,151,5-Apr-97,R,LOUISVILLE
+NYL,12,Reshanda Gray,F,2-Jun,192,1-Jun-93,2,CALIFORNIA
+NYL,14,Bria Hartley,G,8-May,148,30-Sep-92,5,CONNECTICUT
+NYL,23,Marine Johannes,G,10-May,134,21-Jan-95,R,FRANCE/FRANCE
+NYL,5,Kia Nurse,G,Jun-00,168,22-Feb-96,1,CONNECTICUT
+NYL,4,Nayo Raincock-Ekunwe,F-C,2-Jun,175,29-Aug-91,1,SIMON FRASER (CANADA)
+NYL,30,Tanisha Wright,G,11-May,166,29-Nov-83,13,PENN STATE/USA
+NYL,21,Han Xu,C,9-Jun,193,1-Oct-99,R,CHINA/CHINA
+NYL,17,Amanda Zahui B,C,5-Jun,250,8-Sep-93,4,MINNESOTA
+WAS,7,Ariel Atkins,G,8-May,167,30-Jul-96,1,TEXAS
+WAS,9,Natasha Cloud,G,9-May,160,22-Feb-92,4,ST. JOSEPH'S (PA)
+WAS,11,Elena Delle Donne,F-G,5-Jun,187,5-Sep-89,6,DELAWARE/USA
+WAS,21,Tianna Hawkins,F,3-Jun,186,2-Mar-91,5,MARYLAND/USA
+WAS,2,Myisha Hines-Allen,F,1-Jun,200,30-May-96,1,LOUISVILLE
+WAS,5,Kiara Leslie,G,Jun-00,175,6-Dec-95,R,NORTH CAROLINA STATE
+WAS,33,Emma Meesseman,F,4-Jun,191,13-May-93,5,BELGIUM
+WAS,6,Kim Mestdagh,G,9-May,154,12-Mar-90,R,COLORADO STATE
+WAS,23,Aerial Powers,F,9-May,159,17-Jan-94,3,MICHIGAN STATE
+WAS,30,LaToya Sanders,F-C,2-Jun,170,11-Sep-86,6,NORTH CAROLINA/USA
+WAS,20,Kristi Toliver,G,7-May,130,27-Jan-87,10,MARYLAND/USA
+WAS,32,Shatori Walker-Kimbrough,G,9-May,140,18-May-95,2,MARYLAND
+LAS,0,Alana Beard,G-F,11-May,160,14-May-82,13,DUKE/USA
+LAS,21,Kalani Brown,C,7-Jun,245,21-Mar-97,R,BAYLOR
+LAS,12,Chelsea Gray,G,11-May,170,8-Oct-92,4,DUKE
+LAS,1,Alexis Jones,G,9-May,173,8-May-94,2,BAYLOR
+LAS,5,Marina Mabrey,G,11-May,170,14-Sep-96,R,NOTRE DAME
+LAS,30,Nneka Ogwumike,F,2-Jun,174,2-Jul-90,7,STANFORD/USA
+LAS,13,Chiney Ogwumike,F-C,4-Jun,173,22-Mar-92,3,STANFORD/USA
+LAS,3,Candace Parker,F-C,4-Jun,175,19-Apr-86,11,TENNESSEE/USA
+LAS,10,Tierra Ruffin-Pratt,G-F,11-May,180,11-Apr-91,6,NORTH CAROLINA/USA
+LAS,44,Karlie Samuelson,G,Jun-00,160,10-May-95,1,STANFORD
+LAS,7,Maria Vadeeva,F-C,4-Jun,185,16-Jul-98,1,RUSSIA
+LAS,24,Sydney Wiese,G,Jun-00,165,16-Jun-95,2,OREGON STATE
+LAS,2,Riquna Williams,G,7-May,165,28-May-90,6,MIAMI (FLA.)
+MIN,33,Seimone Augustus,G,Jun-00,172,30-Apr-84,13,LOUISIANA STATE/USA
+MIN,15,Kenisha Bell,G,10-May,146,25-May-96,R,
+MIN,4,Lexie Brown,G,9-May,158,27-Oct-94,1,DUKE
+MIN,0,Karima Christmas-Kelly,F,Jun-00,209,11-Sep-89,8,DUKE/USA
+MIN,24,Napheesa Collier,F,1-Jun,182,23-Sep-96,R,CONNECTICUT
+MIN,92,Damiris Dantas,F,3-Jun,206,17-Nov-92,4,BRAZIL
+MIN,14,Temi Fagbenle,C,4-Jun,179,8-Sep-92,2,USC/USA
+MIN,34,Sylvia Fowles,C,6-Jun,227,6-Oct-85,11,LOUISIANA STATE/USA
+MIN,23,Maya Moore,F,Jun-00,175,11-Jun-89,8,CONNECTICUT/USA
+MIN,3,Danielle Robinson,G,9-May,136,10-May-89,7,OKLAHOMA
+MIN,10,Jessica Shepard,F,3-Jun,198,11-Sep-96,R,NOTRE DAME
+MIN,1,Odyssey Sims,G,8-May,163,13-Jul-92,5,BAYLOR
+MIN,8,Stephanie Talbot,F,2-Jun,175,15-Jun-94,2,AUSTRALIA
+MIN,31,Asia Taylor,F,1-Jun,167,22-Aug-91,4,LOUISVILLE
+CON,24,DeWanna Bonner,F,4-Jun,143,21-Aug-87,9,AUBURN/USA
+CON,17,Essence Carson,G,Jun-00,163,28-Jul-86,11,RUTGERS/USA
+CON,9,Sophie Cunningham,G,1-Jun,170,16-Aug-96,R,MISSOURI
+CON,42,Brittney Griner,C,9-Jun,205,18-Oct-90,6,BAYLOR/USA
+CON,12,Briann January,G,8-May,144,11-Jan-87,10,ARIZONA STATE/USA
+CON,20,Camille Little,F,2-Jun,180,18-Jan-85,12,NORTH CAROLINA/USA
+CON,31,Sancho Lyttle,F,5-Jun,175,20-Sep-83,14,HOUSTON/USA
+CON,5,Leilani Mitchell,G,5-May,138,15-Jun-85,10,UTAH/USA
+CON,11,Alanna Smith,F,4-Jun,180,10-Nov-96,R,STANFORD
+CON,3,Diana Taurasi,G,Jun-00,163,11-Jun-82,14,CONNECTICUT/USA
+CON,21,Brianna Turner,F,3-Jun,170,5-Jul-96,R,NOTRE DAME
+CON,6,Yvonne Turner,G,10-May,131,13-Oct-87,2,NEBRASKA/USA
+SEA,10,Sue Bird,G,9-May,150,16-Oct-80,16,CONNECTICUT/USA
+SEA,21,Jordin Canada,G,6-May,,11-Aug-95,1,UCLA
+SEA,32,Alysha Clark,F,11-May,167,7-Jul-87,7,MIDDLE TENNESSEE STATE/USA
+SEA,12,Blake Dietrick,G,10-May,157,19-Jul-93,2,PRINCETON
+SEA,6,Natasha Howard,F,2-Jun,165,2-Sep-91,5,FLORIDA STATE
+SEA,1,Crystal Langhorne,F-C,2-Jun,185,27-Oct-86,11,MARYLAND/USA
+SEA,24,Jewell Loyd,G,10-May,148,5-Oct-93,4,NOTRE DAME
+SEA,23,Kaleena Mosqueda-Lewis,F,11-May,180,3-Nov-93,4,CONNECTICUT
+SEA,3,Courtney Paris,C,4-Jun,250,21-Sep-87,9,OKLAHOMA/USA
+SEA,2,Mercedes Russell,C,6-Jun,,27-Jul-95,1,TENNESSEE
+SEA,30,Breanna Stewart,F,4-Jun,170,27-Aug-94,3,CONNECTICUT
+SEA,33,Sami Whitcomb,G-F,10-May,145,20-Jul-88,2,WASHINGTON
+SEA,11,Shavonte Zellous,G,10-May,188,28-Aug-86,10,PITTSBURGH/USA
+PHO,24,DeWanna Bonner,F,4-Jun,143,21-Aug-87,9,AUBURN/USA
+PHO,17,Essence Carson,G,Jun-00,163,28-Jul-86,11,RUTGERS/USA
+PHO,9,Sophie Cunningham,G,1-Jun,170,16-Aug-96,R,MISSOURI
+PHO,42,Brittney Griner,C,9-Jun,205,18-Oct-90,6,BAYLOR/USA
+PHO,12,Briann January,G,8-May,144,11-Jan-87,10,ARIZONA STATE/USA
+PHO,20,Camille Little,F,2-Jun,180,18-Jan-85,12,NORTH CAROLINA/USA
+PHO,31,Sancho Lyttle,F,5-Jun,175,20-Sep-83,14,HOUSTON/USA
+PHO,5,Leilani Mitchell,G,5-May,138,15-Jun-85,10,UTAH/USA
+PHO,11,Alanna Smith,F,4-Jun,180,10-Nov-96,R,STANFORD
+PHO,3,Diana Taurasi,G,Jun-00,163,11-Jun-82,14,CONNECTICUT/USA
+PHO,21,Brianna Turner,F,3-Jun,170,5-Jul-96,R,NOTRE DAME
+PHO,6,Yvonne Turner,G,10-May,131,13-Oct-87,2,NEBRASKA/USA
+DAS,3,Kaela Davis,F-G,2-Jun,170,15-Mar-95,2,SOUTH CAROLINA
+DAS,4,Skylar Diggins-Smith,G,9-May,145,2-Aug-90,6,NOTRE DAME/USA
+DAS,15,Allisha Gray,G,Jun-00,167,12-Jan-95,2,SOUTH CAROLINA
+DAS,13,Megan Gustafson,F,3-Jun,195,13-Dec-96,R,
+DAS,20,Isabelle Harrison,F,3-Jun,183,27-Sep-93,2,TENNESSEE
+DAS,2,Tayler Hill,G,9-May,145,23-Oct-90,6,OHIO STATE/USA
+DAS,,Moriah Jefferson,G,6-May,123,8-Mar-94,3,CONNECTICUT
+DAS,25,Glory Johnson,F,3-Jun,170,27-Jul-90,6,TENNESSEE/USA
+DAS,1,Brooke McCarty-Williams,G,4-May,,2-Oct-95,R,TEXAS
+DAS,34,Imani McGee-Stafford,C,7-Jun,215,11-Oct-94,3,TEXAS
+DAS,24,Arike Ogunbowale,G,8-May,165,2-Mar-97,R,NOTRE DAME
+DAS,55,Theresa Plaisance,F-C,5-Jun,200,18-May-92,5,LOUISIANA STATE
+DAS,30,Azurá Stevens,F-C,6-Jun,180,1-Feb-96,1,CONNECTICUT
+DAS,6,Kayla Thornton,F,1-Jun,190,20-Oct-92,3,TEXAS-EL PASO
+LVA,8,Liz Cambage,C,8-Jun,216,18-Aug-91,3,Australia
+LVA,51,Sydney Colson,G,8-May,140,6-Aug-89,5,Texas A&M/USA
+LVA,5,Dearica Hamby,F,3-Jun,189,6-Nov-93,4,Wake Forest
+LVA,21,Kayla McBride,G,10-May,174,25-Jun-92,5,Notre Dame/USA
+LVA,19,JiSu Park,C,5-Jun,206,6-Dec-98,1,South Korea
+LVA,10,Kelsey Plum,G,8-May,145,24-Aug-94,2,Washington
+LVA,14,Sugar Rodgers,G,9-May,161,8-Dec-89,6,Georgetown/USA
+LVA,4,Carolyn Swords,C,6-Jun,215,19-Jul-89,7,Boston College/USA
+LVA,22,A'ja Wilson,F,4-Jun,195,8-Aug-96,1,South Carolina
+LVA,1,Tamera Young,F,2-Jun,175,30-Oct-86,11,James Madison/USA
+LVA,0,Jackie Young,G,Jun-00,165,16-Sep-97,R,Notre Dame
