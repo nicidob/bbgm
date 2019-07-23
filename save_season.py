@@ -13,11 +13,12 @@ import itertools
 
 tables = {}
 
-teams = ['MIL','TOR','PHI','BOS','IND','BRK','ORL','DET','CHO','MIA',\
-         'WAS','ATL','CHI','CLE','NYK','GSW','DEN','POR','HOU','UTA',\
-         'OKC','SAS','LAC','SAC','LAL','MIN','MEM','NOP','DAL','PHO',\
-         'NJN','SEA','VAN','NOH','CHA','CHH','NOK','KCO','BUF','WSB',\
-         'KCK','SDC','NOJ','BAL','CAP','NYN']
+teams = ['ANA','ATL','BAL','BOS','BRK','BUF','CAP','CAR','CHA','CHH','CHI','CHO','CHP','CHZ','CIN',\
+         'CLE','DAL','DEN','DET','DLC','DNA','DNR','FLO','FTW','GSW','HOU','HSM','IND','KCK','KCO',\
+         'LAC','LAL','LAS','MEM','MIA','MIL','MIN','MLH','MMF','MMP','MMS','MMT','MNL','MNM','MNP',\
+         'NJN','NOB','NOH','NOJ','NOK','NOP','NYK','NYN','OAK','OKC','ORL','PHI','PHO','PHW','POR',\
+         'PTC','PTP','ROC','SAA','SAC','SAS','SDA','SDC','SDR','SDS','SEA','SFW','SSL','STL','SYR',\
+         'TEX','TOR','TRI','UTA','UTS','VAN','VIR','WAS','WSA','WSB']
 teams = sorted(teams)
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -42,21 +43,25 @@ for team in teams:
     ctarget = os.path.join(args.cfolder,team + '.html')
     otarget = os.path.join(args.offolder,team + str(args.year) + '.html')
 
-    # get the files
-    if args.ow or not os.path.exists(target):
-        subprocess.call(['wget','-O',target,
-        'https://www.basketball-reference.com/teams/{}/{}.html'.format(team,args.year)])
-        fs = os.path.getsize(target)
-        if fs < 10:
-            os.remove(target)
+    if True:
+        if not os.path.exists(target):
             continue
-    if args.ow or not os.path.exists(otarget):
-        subprocess.call(['wget','-O',otarget,
-        'https://www.basketball-reference.com/teams/{}/{}/on-off/'.format(team,args.year)])
-    if args.ow or not os.path.exists(ctarget):
-        subprocess.call(['wget','-O',ctarget,
-        'https://www.basketball-reference.com/contracts/{}.html'.format(team)])
-    
+    # get the files
+    else:
+        if args.ow or not os.path.exists(target):
+            subprocess.call(['wget','-O',target,
+            'https://www.basketball-reference.com/teams/{}/{}.html'.format(team,args.year)])
+            fs = os.path.getsize(target)
+            if fs < 10:
+                os.remove(target)
+                continue
+        if args.ow or not os.path.exists(otarget):
+            subprocess.call(['wget','-O',otarget,
+            'https://www.basketball-reference.com/teams/{}/{}/on-off/'.format(team,args.year)])
+        if args.ow or not os.path.exists(ctarget):
+            subprocess.call(['wget','-O',ctarget,
+            'https://www.basketball-reference.com/contracts/{}.html'.format(team)])
+        
     # load the data
     with open(target,'rt') as fp:
         data = fp.read()
@@ -73,6 +78,13 @@ for team in teams:
     m = m2 + m + m3 + m4
     print(target,len(m),len(m4))
     tables[team] = {}
+
+    bs = BeautifulSoup(data,features="lxml")
+
+    tables[team]['logo'] = re.findall('(http.*png)',str(bs.find_all('img',{"class": "teamlogo"})[0]))[0]
+    tables[team]['name'] = re.findall('{}-{} (.*) Roster and Stats'.format(args.year-1,str(args.year)[-2:]),data)[0]
+    tables[team]['conf'] = re.findall('<p>[ \n]*<strong>Record:<\/strong>[ \n]*(.*)*\n.*[ \n]*<\/p>',data)[0]
+
     for test_table in m:
         try:
             soup = BeautifulSoup(test_table,features="lxml")
