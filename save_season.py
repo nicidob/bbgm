@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import itertools
-
+import io
 
 tables = {}
 
@@ -27,6 +27,7 @@ parser.add_argument('--folder', default='teams',type=str, help='folder to save y
 parser.add_argument('--cfolder', default='contracts',type=str, help='contracts folder')
 parser.add_argument('--offolder', default='onoff',type=str, help='onoff folder')
 parser.add_argument('--ow', action='store_true',help='overwrite existing')
+parser.add_argument('--process', action='store_true',help='only process files, no fetching')
 
 args = parser.parse_args()
 
@@ -43,7 +44,7 @@ for team in teams:
     ctarget = os.path.join(args.cfolder,team + '.html')
     otarget = os.path.join(args.offolder,team + str(args.year) + '.html')
 
-    if True:
+    if args.process:
         if not os.path.exists(target):
             continue
     # get the files
@@ -63,12 +64,22 @@ for team in teams:
             'https://www.basketball-reference.com/contracts/{}.html'.format(team)])
         
     # load the data
-    with open(target,'rt') as fp:
-        data = fp.read()
-    with open(ctarget,'rt') as fp:
-        datac = fp.read()
-    with open(otarget,'rt') as fp:
-        datao = fp.read()
+    try:
+        with open(target,'rt') as fp:
+            data = fp.read()
+    except:
+        with open(target,'rt',encoding='latin-1') as fp:
+            data = fp.read()
+    try:
+        with open(ctarget,'rt') as fp:
+            datac = fp.read()
+        with open(otarget,'rt') as fp:
+            datao = fp.read()
+    except:
+        with open(ctarget,'rt',encoding='latin-1') as fp:
+            datac = fp.read()
+        with open(otarget,'rt',encoding='latin-1') as fp:
+            datao = fp.read()
     # collect all the tables
     m = re.findall(r'<!--[ \n]*(<div[\s\S\r]+?</div>)[ \n]*-->',data)
     m2 = re.findall(r'(<div class="table_outer_container">[ \n]*<div class="overthrow table_container" id="div_roster">[\s\S\r]+?</table>[ \n]*</div>[ \n]*</div>)',data)
