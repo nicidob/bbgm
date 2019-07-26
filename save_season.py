@@ -15,8 +15,8 @@ tables = {}
 
 teams = ['ANA','ATL','BAL','BOS','BRK','BUF','CAP','CAR','CHA','CHH','CHI','CHO','CHP','CHZ','CIN',\
          'CLE','DAL','DEN','DET','DLC','DNA','DNR','FLO','FTW','GSW','HOU','HSM','INA','IND','KCK','KCO',\
-         'LAC','LAL','LAS','MEM','MIA','MIL','MIN','MLH','MMF','MMP','MMS','MMT','MNL','MNM','MNP',\
-         'NJN','NOB','NOH','NOJ','NOK','NOP','NYK','NYN','OAK','OKC','ORL','PHI','PHO','PHW','POR',\
+         'KEN','LAC','LAL','LAS','MEM','MIA','MIL','MIN','MLH','MMF','MMP','MMS','MMT','MNL','MNM','MNP',\
+         'NYA','NJA','NJN','NOB','NOH','NOJ','NOK','NOP','NYK','NYN','OAK','OKC','ORL','PHI','PHO','PHW','POR',\
          'PTC','PTP','ROC','SAA','SAC','SAS','SDA','SDC','SDR','SDS','SEA','SFW','SSL','STL','SYR',\
          'WSC','TEX','TOR','TRI','UTA','UTS','VAN','VIR','WAS','WSA','WSB','BLB','INO']
 teams = sorted(teams)
