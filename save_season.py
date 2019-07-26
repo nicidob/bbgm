@@ -14,11 +14,11 @@ import io
 tables = {}
 
 teams = ['ANA','ATL','BAL','BOS','BRK','BUF','CAP','CAR','CHA','CHH','CHI','CHO','CHP','CHZ','CIN',\
-         'CLE','DAL','DEN','DET','DLC','DNA','DNR','FLO','FTW','GSW','HOU','HSM','IND','KCK','KCO',\
+         'CLE','DAL','DEN','DET','DLC','DNA','DNR','FLO','FTW','GSW','HOU','HSM','INA','IND','KCK','KCO',\
          'LAC','LAL','LAS','MEM','MIA','MIL','MIN','MLH','MMF','MMP','MMS','MMT','MNL','MNM','MNP',\
          'NJN','NOB','NOH','NOJ','NOK','NOP','NYK','NYN','OAK','OKC','ORL','PHI','PHO','PHW','POR',\
          'PTC','PTP','ROC','SAA','SAC','SAS','SDA','SDC','SDR','SDS','SEA','SFW','SSL','STL','SYR',\
-         'TEX','TOR','TRI','UTA','UTS','VAN','VIR','WAS','WSA','WSB']
+         'WSC','TEX','TOR','TRI','UTA','UTS','VAN','VIR','WAS','WSA','WSB','BLB','INO']
 teams = sorted(teams)
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -34,10 +34,10 @@ args = parser.parse_args()
 for folder in [args.folder,args.cfolder,args.offolder]:
     try:
         os.mkdir(folder)
-        print("Directory {} created".format(folder)) 
+        print("Directory {} created".format(folder))
     except FileExistsError:
         pass
-    
+
 
 for team in teams:
     target = os.path.join(args.folder,team + str(args.year) + '.html')
@@ -62,7 +62,7 @@ for team in teams:
         if args.ow or not os.path.exists(ctarget):
             subprocess.call(['wget','-O',ctarget,
             'https://www.basketball-reference.com/contracts/{}.html'.format(team)])
-        
+
     # load the data
     try:
         with open(target,'rt') as fp:
@@ -154,9 +154,9 @@ for team in teams:
             obj_cols = stats.loc[:, stats.dtypes == object]
             conv_cols = obj_cols.apply(pd.to_numeric, errors = 'ignore')
             stats.loc[:, stats.dtypes == object] = conv_cols
-            
+
             stats = stats.fillna('')
-            
+
             if True and 'on_off' in table_id:
                 stats = stats.iloc[~ stats.index.get_loc('Player')]
                 stats = stats.loc[~ (stats.Split == '')]
