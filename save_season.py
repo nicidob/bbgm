@@ -26,12 +26,13 @@ parser.add_argument('--year', default=2019,type=int, help='season to save')
 parser.add_argument('--folder', default='teams',type=str, help='folder to save year stats')
 parser.add_argument('--cfolder', default='contracts',type=str, help='contracts folder')
 parser.add_argument('--offolder', default='onoff',type=str, help='onoff folder')
+parser.add_argument('--tfolder', default='trans',type=str, help='trans folder')
 parser.add_argument('--ow', action='store_true',help='overwrite existing')
 parser.add_argument('--process', action='store_true',help='only process files, no fetching')
 
 args = parser.parse_args()
 
-for folder in [args.folder,args.cfolder,args.offolder]:
+for folder in [args.folder,args.cfolder,args.offolder,args.tfolder]:
     try:
         os.mkdir(folder)
         print("Directory {} created".format(folder))
@@ -43,6 +44,7 @@ for team in teams:
     target = os.path.join(args.folder,team + str(args.year) + '.html')
     ctarget = os.path.join(args.cfolder,team + '.html')
     otarget = os.path.join(args.offolder,team + str(args.year) + '.html')
+    ttarget = os.path.join(args.tfolder,team + str(args.year) + '.html')
 
     if args.process:
         if not os.path.exists(target):
@@ -62,6 +64,9 @@ for team in teams:
         if args.ow or not os.path.exists(ctarget):
             subprocess.call(['wget','-O',ctarget,
             'https://www.basketball-reference.com/contracts/{}.html'.format(team)])
+        if args.ow or not os.path.exists(ttarget):
+            subprocess.call(['wget','-O',ttarget,
+            'https://www.basketball-reference.com/teams/{}/{}_transactions.html'.format(team,args.year)])
 
     # load the data
     try:
