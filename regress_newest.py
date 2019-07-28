@@ -55,6 +55,8 @@ for name in stat_list:
     X[name + 'p100'] = X[name + 'p36']*4/3
 
 if not OLD_YEARS:
+    X['DRE'] = -8.4+ 0.8*X['PTSp100'] -0.7*(X['FGAp100']-X['3PAp100']) -0.6*X['3PAp100'] - 0.2*X['FTp100'] + 0.1*X['ORBp100'] + 0.4*X['DRBp100'] + 0.5*X['ASTp100'] + 1.7*X['STLp100'] + 0.8*X['Blkp100'] - 1.4*X['TOVp100'] - 0.1*X['PFp100']
+
     X['3PtP'] = (2/(1+np.exp(-X['3PAp100']))-1)*X['3P%']/100
     X['Creation'] = X['ASTp100']*0.1843+(X['PTSp100']+X['TOVp100'])*0.0969-2.3021*X['3PtP']+0.0582*(X['ASTp100']*(X['PTSp100']+X['TOVp100'])*X['3PtP'] )-1.1942
     X['Load'] = (X['ASTp100']-(0.38*X['Creation'])*0.75)+X['FGAp100']+X['FTAp100']*0.44+X['Creation']+X['TOVp100']
@@ -63,10 +65,17 @@ if not OLD_YEARS:
     X['OPM'] = -8.57647+0.6111*X['PTSp100']-0.33918*(0.44*X['FTAp100']+X['FGAp100'])+0.440814*X['FTAp100']+0.379745*X['3PAp100']+0.634044*X['ASTp100']+0.77827*X['ORBp100']-1.08855*X['TOVp100']+0.26262*X['STLp100']
     X['BPM'] = X['OPM'] + X['DPM']
     X['Age'] = df['Age']
+    X['DRE'] = -8.4+ 0.8*X['PTSp100'] -0.7*(X['FGAp100']-X['3PAp100']) -0.6*X['3PAp100'] - 0.2*X['FTp100'] + 0.1*X['ORBp100'] + 0.4*X['DRBp100'] + 0.5*X['ASTp100'] + 1.7*X['STLp100'] + 0.8*X['Blkp100'] - 1.4*X['TOVp100'] - 0.1*X['PFp100']
+    for name in [_ for _ in X.columns if 'FG' in _]:
+        name3 = name.replace('FG','3P')
+        if '%' in name or name3 not in list(X.columns):
+            continue
+        nname = name.replace('FG','2P')
+        X[nname] = X[name] - X[name3]
 
 #X['PassP'] = ((X['ASTp100']-(0.38*X['Creation']))*0.752+ X['Creation'] + X['TOVp100']) ** 0.67
 #'OPM','DPM','cTOV','Load'#stat_list[:-2]+
-X = X[[_ for _ in X.columns if '%A' in _ or _[-1]=='r' or "+/-" in _ or 'p36' in _ or _ in (['FT%','OPM','BPM','DPM','Creation','cTOV','Load','Age','MP'])]]
+X = X[[_ for _ in X.columns if '%A' in _ or _[-1]=='r' or "+/-" in _ or 'p36' in _ or _ in (['DRE','FT%','OPM','BPM','DPM','Creation','cTOV','Load','Age','MP'])]]
 if OLD_YEARS:
     X = X[[_ for _ in X.columns if not '3P' in _]]
     X = X[[_ for _ in X.columns if not 'Rim' in _]]
@@ -357,7 +366,7 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
     lt = [('FG%','totals'),('MP','per_game'),('Ht','roster'),('Birth Date','roster'),
                 ('FG','per_game'),('FGA','per_game'),('3P','per_game'),('3PA','per_game'),('3P%','totals'),
                 ('FT','per_game'),('ORB','per_game'),('TRB','per_game'),('FT%','totals'),
-                ('FTA','per_game'),('DRB','per_game'),('AST','per_game'),
+                ('FTA','per_game'),('DRB','per_game'),('AST','per_game'),('2P','per_game'),('2PA','per_game'),
                 ('STL','per_game'),('TOV','per_game'),('Blk','per_game','BLK'),
                 ('PF','per_game'),('PTS','per_game','PTS/G'),('PER','advanced'),('PTS','per_game','PTS'),
                 ('OPM','advanced','OBPM'),('BPM','advanced'),('USG%','advanced'),('DPM','advanced','DBPM'),
@@ -435,6 +444,7 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
                     d['Age']=np.random.randint(25,35)
 
                 if '3PAp100' in d:
+                    d['DRE'] = -8.4+ 0.8*d['PTSp100'] -0.7*(d['FGAp100']-d['3PAp100']) -0.6*d['3PAp100'] - 0.2*d['FTp100'] + 0.1*d['ORBp100'] + 0.4*d['DRBp100'] + 0.5*d['ASTp100'] + 1.7*d['STLp100'] + 0.8*d['Blkp100'] - 1.4*d['TOVp100'] - 0.1*d['PFp100']
                     d['3PtP'] = (2/(1+np.exp(-d['3PAp100']))-1)*d['3P%']
                     d['Creation'] = d['ASTp100']*0.1843+(d['PTSp100']+d['TOVp100'])*0.0969-2.3021*d['3PtP']+0.0582*(d['ASTp100']*(d['PTSp100']+d['TOVp100'])*d['3PtP'] )-1.1942
                     d['Load'] = (d['ASTp100']-(0.38*d['Creation'])*0.75)+d['FGAp100']+d['FTAp100']*0.44+d['Creation']+d['TOVp100']
