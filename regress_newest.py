@@ -17,10 +17,10 @@ from collections import defaultdict
 
 
 # In[2]:
-OLD_YEARS = False
+OLD_YEARS = True
 
-df = pd.read_csv('avg_stats.csv')#pd.read_csv('BBGM_League_7_all_seasons_Average_Stats.csv')
-df = df[(df.G*df.MP > 48)]
+df = pd.read_csv('big_stat.csv')#pd.read_csv('BBGM_League_7_all_seasons_Average_Stats.csv')
+df = df[(df.G*df.MP > 100)]
 df.shape
 
 if OLD_YEARS:
@@ -35,8 +35,7 @@ else:
 
 y = df.iloc[:,-15:]
 X = df.iloc[:,11:-17]
-y = y[(X['AST%'] >0) & (X['AST%'] < 100)]
-X = X[(X['AST%'] >0) & (X['AST%'] < 100)]
+
 X['MP'] = df.MP
 X['Hgt'] = df['Hgt']
 df.columns
@@ -72,10 +71,17 @@ if not OLD_YEARS:
             continue
         nname = name.replace('FG','2P')
         X[nname] = X[name] - X[name3]
+X['PER'] = df['PER']
+    #X['DREO'] = X['PTSp100'] + .2*X['TRBp100'] + .5*X['ASTp100'] - .9*X['FGAp100'] - .35*X['FTAp100']-6.23
+#X['PassP'] = ((X['ASTp100']-(0.38*X['Creation']))*0.752+ X['Creation'] + X['TOVp100']) ** 0.67
+#'OPM','DPM','cTOV','Load'#stat_list[:-2]+
+#'PER','FG%','DREO'
+X['OSPM']= X['PTSp36']*0.15 +  X['FTAp36']*0.03 +  X['ASTp36']*0.12 +  X['TRBp36']*0.09 \
+          -X['FTp36']*0.10 -  X['FGAp36']*0.06 -X['FGp36']*0.24 -0.92
 
 #X['PassP'] = ((X['ASTp100']-(0.38*X['Creation']))*0.752+ X['Creation'] + X['TOVp100']) ** 0.67
 #'OPM','DPM','cTOV','Load'#stat_list[:-2]+
-X = X[[_ for _ in X.columns if '%A' in _ or _[-1]=='r' or "+/-" in _ or 'p36' in _ or _ in (['DRE','FT%','OPM','BPM','DPM','Creation','cTOV','Load','Age','MP'])]]
+X = X[[_ for _ in X.columns if '%A' in _ or _[-1]=='r' or "+/-" in _ or 'p36' in _ or _ in (['OSPM','PER','DRE','FT%','OPM','BPM','DPM','Creation','cTOV','Load','Age','MP'])]]
 if OLD_YEARS:
     X = X[[_ for _ in X.columns if not '3P' in _]]
     X = X[[_ for _ in X.columns if not 'Rim' in _]]
@@ -146,7 +152,7 @@ for i in range(trials):
     #clf = neural_network.MLPRegressor((36,5,24,36),'tanh',solver='adam',max_iter=1000)
     #clf = neural_network.MLPRegressor((),'identity',solver='lbfgs',alpha=5e2,tol=1e-9)
     #clf = multioutput.MultiOutputRegressor(linear_model.SGDRegressor(penalty='l2',alpha=5e2,eta0=1e-6,tol=1e-12,max_iter=50,verbose=True))
-    clf = multioutput.MultiOutputRegressor(linear_model.ElasticNet(alpha=5e-3))
+    clf = multioutput.MultiOutputRegressor(linear_model.ElasticNet(alpha=5e-3,l1_ratio=0.5))
     #clf = ensemble.ExtraTreesRegressor(8,criterion='mae',max_depth=3,verbose=1)
     #clf = multioutput.MultiOutputRegressor(svm.SVR())
     clf.fit(prescale_X,prescale_y)
@@ -367,7 +373,7 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
                 ('FG','per_game'),('FGA','per_game'),('3P','per_game'),('3PA','per_game'),('3P%','totals'),
                 ('FT','per_game'),('ORB','per_game'),('TRB','per_game'),('FT%','totals'),
                 ('FTA','per_game'),('DRB','per_game'),('AST','per_game'),('2P','per_game'),('2PA','per_game'),
-                ('STL','per_game'),('TOV','per_game'),('Blk','per_game','BLK'),
+                ('STL','per_game'),('TOV','per_game'),('Blk','per_game','BLK'),('PER','advanced'),
                 ('PF','per_game'),('PTS','per_game','PTS/G'),('PER','advanced'),('PTS','per_game','PTS'),
                 ('OPM','advanced','OBPM'),('BPM','advanced'),('USG%','advanced'),('DPM','advanced','DBPM'),
                 #('AtRimFGP','totals','2P%'), ('LowPostFGP','totals','2P%'), ('MidRangeFGP','totals','eFG%'),
@@ -426,7 +432,8 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
                 #print(ty,team,name)
                 for k,v in locs[(ty,team)].items():
                     try:
-                        d[k] = stats[v[1]][0][v[0]]
+                        SV = stats[v[1]][0][v[0]]
+                        d[k] = 0 if SV == '' else SV
                     except:
                         #print(k,v)
                         #print(stats)
@@ -452,12 +459,17 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
                     d['DPM'] = d['Blkp100']*0.802+d['DRBp100']*0.42-4.7-0.07551*d['PFp100']+1.597019*d['STLp100']-0.26385*d['TOVp100']
                     d['OPM'] = -8.57647+0.6111*d['PTSp100']-0.33918*(0.44*d['FTAp100']+d['FGAp100'])+0.440814*d['FTAp100']+0.379745*d['3PAp100']+0.634044*d['ASTp100']+0.77827*d['ORBp100']-1.08855*d['TOVp100']+0.26262*d['STLp100']
                     d['BPM'] = d['OPM']+d['DPM']
-                player_names.append(name)
-                player_years.append(ty)
+                d['DREO'] = d['PTSp36'] + .2*d['TRBp36'] + .5*d['ASTp36'] - .9*d['FGAp36'] - .35*d['FTAp36']-6.23
+                d['OSPM']= d['PTSp36']*0.15 +  d['FTAp36']*0.03 +  d['ASTp36']*0.12 +  d['TRBp36']*0.09 \
+                            -d['FTp36']*0.10 -  d['FGAp36']*0.06 -d['FGp36']*0.24 -0.92
+
+
 
                 MP = np.maximum(1,np.nan_to_num(d['MPT']))
                 player_scales.append(MP)
                 player_vectors.append([d[stat] for stat in X.columns])
+                player_names.append(name)
+                player_years.append(ty)
                 player_heights.append(d['Hgt'])
             except:
                 print(name)
