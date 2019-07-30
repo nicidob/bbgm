@@ -71,13 +71,16 @@ if not OLD_YEARS:
             continue
         nname = name.replace('FG','2P')
         X[nname] = X[name] - X[name3]
+else:
+    X['PTSp36'] -= X['3Pp36']
+    X['OSPM']= X['FGp36']*0.23 +  X['FTp36']*0.13 +  X['ASTp36']*0.12 +  X['TRBp36']*0.08 \
+          + X['FTAp36']*0.02 -  X['FGAp36']*0.05 -X['PTSp36']*0.09 -X['PFp36']*0.01 -1.92
 X['PER'] = df['PER']
     #X['DREO'] = X['PTSp100'] + .2*X['TRBp100'] + .5*X['ASTp100'] - .9*X['FGAp100'] - .35*X['FTAp100']-6.23
 #X['PassP'] = ((X['ASTp100']-(0.38*X['Creation']))*0.752+ X['Creation'] + X['TOVp100']) ** 0.67
 #'OPM','DPM','cTOV','Load'#stat_list[:-2]+
 #'PER','FG%','DREO'
-X['OSPM']= X['PTSp36']*0.15 +  X['FTAp36']*0.03 +  X['ASTp36']*0.12 +  X['TRBp36']*0.09 \
-          -X['FTp36']*0.10 -  X['FGAp36']*0.06 -X['FGp36']*0.24 -0.92
+
 
 #X['PassP'] = ((X['ASTp100']-(0.38*X['Creation']))*0.752+ X['Creation'] + X['TOVp100']) ** 0.67
 #'OPM','DPM','cTOV','Load'#stat_list[:-2]+
@@ -449,6 +452,8 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
                     d['Age']= GEN_YEAR-int(d['Birth Date'].split(',')[-1])
                 except:
                     d['Age']=np.random.randint(25,35)
+                if ty < 1980 and '3Pp36' in d:
+                    d['PTSp36'] -= d['3Pp36']
 
                 if '3PAp100' in d:
                     d['DRE'] = -8.4+ 0.8*d['PTSp100'] -0.7*(d['FGAp100']-d['3PAp100']) -0.6*d['3PAp100'] - 0.2*d['FTp100'] + 0.1*d['ORBp100'] + 0.4*d['DRBp100'] + 0.5*d['ASTp100'] + 1.7*d['STLp100'] + 0.8*d['Blkp100'] - 1.4*d['TOVp100'] - 0.1*d['PFp100']
@@ -460,9 +465,8 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
                     d['OPM'] = -8.57647+0.6111*d['PTSp100']-0.33918*(0.44*d['FTAp100']+d['FGAp100'])+0.440814*d['FTAp100']+0.379745*d['3PAp100']+0.634044*d['ASTp100']+0.77827*d['ORBp100']-1.08855*d['TOVp100']+0.26262*d['STLp100']
                     d['BPM'] = d['OPM']+d['DPM']
                 d['DREO'] = d['PTSp36'] + .2*d['TRBp36'] + .5*d['ASTp36'] - .9*d['FGAp36'] - .35*d['FTAp36']-6.23
-                d['OSPM']= d['PTSp36']*0.15 +  d['FTAp36']*0.03 +  d['ASTp36']*0.12 +  d['TRBp36']*0.09 \
-                            -d['FTp36']*0.10 -  d['FGAp36']*0.06 -d['FGp36']*0.24 -0.92
-
+                d['OSPM']= d['FGp36']*0.23 +  d['FTp36']*0.13 +  d['ASTp36']*0.12 +  d['TRBp36']*0.08 \
+                    + d['FTAp36']*0.02 -  d['FGAp36']*0.05 -d['PTSp36']*0.09 -d['PFp36']*0.01 -1.92
 
 
                 MP = np.maximum(1,np.nan_to_num(d['MPT']))
@@ -842,6 +846,8 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
     'drb': 'drb',
     'pss': 'pss',
     'reb': 'reb' }
+    
+
 
 
     # In[194]:
@@ -996,6 +1002,8 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
             r_vec['oiq'] -= 4*min(1,year_gap)
             r_vec = {k: int(np.clip(v,0,100)) for k,v in r_vec.items()}
 
+            if OLD_YEARS:
+                r_vec['tp'] = r_vec['fg']# min(r_vec['tp'],r_vec['2pt'])
             new_player['ratings'] = [r_vec]
             #new_player['ratings']
             players.append(new_player)
