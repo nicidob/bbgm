@@ -17,7 +17,7 @@ from collections import defaultdict
 
 
 # In[2]:
-OLD_YEARS = True
+OLD_YEARS = False
 
 df = pd.read_csv('big_stat.csv')#pd.read_csv('BBGM_League_7_all_seasons_Average_Stats.csv')
 df = df[(df.G*df.MP > 100)]
@@ -468,7 +468,7 @@ for GEN_YEAR in range(START_YEAR,END_YEAR):#= 2019
                 d['OSPM']= d['FGp36']*0.23 +  d['FTp36']*0.13 +  d['ASTp36']*0.12 +  d['TRBp36']*0.08 \
                     + d['FTAp36']*0.02 -  d['FGAp36']*0.05 -d['PTSp36']*0.09 -d['PFp36']*0.01 -1.92
 
-
+                d['Age'] = 27
                 MP = np.maximum(1,np.nan_to_num(d['MPT']))
                 player_scales.append(MP)
                 player_vectors.append([d[stat] for stat in X.columns])
