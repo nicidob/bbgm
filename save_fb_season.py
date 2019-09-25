@@ -51,12 +51,13 @@ teams = sorted(teams)
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--year', default=2018,type=int, help='season to save')
 parser.add_argument('--folder', default='fb_team',type=str, help='folder to save year stats')
+parser.add_argument('--rfolder', default='fb_roster',type=str, help='rosters folder')
 parser.add_argument('--ow', action='store_true',help='overwrite existing')
 parser.add_argument('--process', action='store_true',help='only process files, no fetching')
 
 args = parser.parse_args()
 
-for folder in [args.folder]:
+for folder in [args.folder,args.rfolder]:
     try:
         os.mkdir(folder)
         print("Directory {} created".format(folder))
@@ -66,6 +67,7 @@ for folder in [args.folder]:
 
 for team in teams:
     target = os.path.join(args.folder,team + str(args.year) + '.html')
+    rtarget = os.path.join(args.rfolder,team + str(args.year) + '.html')
 
     if args.process:
         if not os.path.exists(target):
@@ -79,23 +81,29 @@ for team in teams:
             if fs < 10:
                 os.remove(target)
                 continue
+        if args.ow or not os.path.exists(rtarget):
+            subprocess.call(['wget','-O',rtarget,
+            'https://www.pro-football-reference.com/teams/{}/{}_roster.htm'.format(team,args.year)])
     # load the data
     try:
         with open(target,'rt') as fp:
             data = fp.read()
+        with open(rtarget,'rt') as fp:
+            rdata = fp.read()
     except:
         with open(target,'rt',encoding='latin-1') as fp:
             data = fp.read()
-    
+        with open(rtarget,'rt',encoding='latin-1') as fp:
+            rdata = fp.read()   
     # collect all the tables
     m = re.findall(r'<!--[ \n]*(<div[\s\S\r]+?</div>)[ \n]*-->',data)
     m2 = re.findall(r'(<div class="table_outer_container">[ \n]*<div class="overthrow table_container" id="div_roster">[\s\S\r]+?</table>[ \n]*</div>[ \n]*</div>)',data)
+    m3 = re.findall(r'<!--[ \n]*(<div[\s\S\r]+?</div>)[ \n]*-->',rdata)
 
-    m = m2 + m 
-    print(target,len(m))
+    m = m2 + m + m3
+    print(target,len(m),len(m3))
     tables[team] = {}
 
-    bs = BeautifulSoup(data,features="lxml")
 
     tables[team]['logo'] = re.findall('(http.*png)',str(bs.find_all('img',{"class": "teamlogo"})[0]))[0]
     tables[team]['name'] = re.findall('{} (.*) Statistics &amp; Players'.format(args.year),data)[0]
