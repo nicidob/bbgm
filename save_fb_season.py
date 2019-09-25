@@ -104,6 +104,7 @@ for team in teams:
     print(target,len(m),len(m3))
     tables[team] = {}
 
+    bs = BeautifulSoup(data,features="lxml")
 
     tables[team]['logo'] = re.findall('(http.*png)',str(bs.find_all('img',{"class": "teamlogo"})[0]))[0]
     tables[team]['name'] = re.findall('{} (.*) Statistics &amp; Players'.format(args.year),data)[0]
