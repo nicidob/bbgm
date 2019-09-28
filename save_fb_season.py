@@ -84,6 +84,10 @@ for team in teams:
         if args.ow or not os.path.exists(rtarget):
             subprocess.call(['wget','-O',rtarget,
             'https://www.pro-football-reference.com/teams/{}/{}_roster.htm'.format(team,args.year)])
+            fs = os.path.getsize(rtarget)
+            if fs < 10:
+                os.remove(rtarget)
+                continue
     # load the data
     try:
         with open(target,'rt') as fp:
@@ -96,20 +100,22 @@ for team in teams:
         with open(rtarget,'rt',encoding='latin-1') as fp:
             rdata = fp.read()   
     # collect all the tables
-    m = re.findall(r'<!--[ \n]*(<div[\s\S\r]+?</div>)[ \n]*-->',data)
-    m2 = re.findall(r'(<div class="table_outer_container">[ \n]*<div class="overthrow table_container" id="div_roster">[\s\S\r]+?</table>[ \n]*</div>[ \n]*</div>)',data)
-    m3 = re.findall(r'<!--[ \n]*(<div[\s\S\r]+?</div>)[ \n]*-->',rdata)
+    try:
+        m = re.findall(r'<!--[ \n]*(<div[\s\S\r]+?</div>)[ \n]*-->',data)
+        m2 = re.findall(r'(<div class="table_outer_container">[ \n]*<div class="overthrow table_container" id="div_roster">[\s\S\r]+?</table>[ \n]*</div>[ \n]*</div>)',data)
+        m3 = re.findall(r'<!--[ \n]*(<div[\s\S\r]+?</div>)[ \n]*-->',rdata)
 
-    m = m2 + m + m3
-    print(target,len(m),len(m3))
-    tables[team] = {}
+        m = m2 + m + m3
+        print(target,len(m),len(m3))
+        tables[team] = {}
 
-    bs = BeautifulSoup(data,features="lxml")
+        bs = BeautifulSoup(data,features="lxml")
 
-    tables[team]['logo'] = re.findall('(http.*png)',str(bs.find_all('img',{"class": "teamlogo"})[0]))[0]
-    tables[team]['name'] = re.findall('{} (.*) Statistics &amp; Players'.format(args.year),data)[0]
-    tables[team]['conf'] = re.findall('<a href="/years/{}">(.*)</a>\n. &nbsp;'.format(args.year),data)[0]
-
+        tables[team]['logo'] = re.findall('(http.*png)',str(bs.find_all('img',{"class": "teamlogo"})[0]))[0]
+        tables[team]['name'] = re.findall('{} (.*) Statistics &amp; Players'.format(args.year),data)[0]
+        tables[team]['conf'] = re.findall('<a href="/years/{}">(.*)</a>\n. &nbsp;'.format(args.year),data)[0]
+    except:
+        continue
     for test_table in m:
         try:
             soup = BeautifulSoup(test_table,features="lxml")
